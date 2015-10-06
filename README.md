@@ -1,5 +1,5 @@
 # rotoPhone
 
-Simple lib to control rotary dial
+Simple lib to control rotary dial with Arduino
 
 ### WIP
