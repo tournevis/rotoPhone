@@ -12,13 +12,16 @@ rotoPhone::number(){
   _state1  = digitalRead(_pin1);
   _state2 = digitalRead(_pin2);
 
-  if (isNum && num == 0 && lastNum ==1) {
+  if (isNum && num == 0 && _lastState ==1) {
     number ++ ;
   }
   if (_state1 == _state2 ) {
     _isNum = true;
   }else{
     _isNum = false;
-    return number;
+    //return number;
   }
+
+  _lastState =digitalRead(_pin2);
+  delay(10);
 }

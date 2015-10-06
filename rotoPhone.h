@@ -10,9 +10,8 @@ class rotoPhone{
   private :
     uint8_t _pin1;
     uint8_t _pin2;
+    uint8_t _lastState;
     bool _state1;
     bool _state2;
     bool _isNum;
-
-
 }
