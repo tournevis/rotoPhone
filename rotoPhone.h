@@ -5,6 +5,7 @@
 class rotoPhone{
   public :
     rotoPhone(uint8_t pin1, uint8_t pin2);
+    rotoPhone(uint8_t pin1, uint8_t pin2, bool pullUp);
     void number();
     void lastNumber();
   private :
