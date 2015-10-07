@@ -1,14 +1,14 @@
 #include "Arduino.h"
-#include "rotoPhone.h"
+#include "RotoPhone.h"
 
-rotoPhone::rotoPhone(uint8_t  pin1, uint8_t  pin2){
+RotoPhone::RotoPhone(uint8_t  pin1, uint8_t  pin2){
   pinMode(pin1, INPUT);
   pinMode(pin2,  INPUT);
   _pin1 = pin1;
   _pin2 = pin2;
 }
 
-rotoPhone::rotoPhone(uint8_t  pin1, uint8_t  pin2, bool pullUp){
+RotoPhone::RotoPhone(uint8_t  pin1, uint8_t  pin2, bool pullUp){
   //Turn on pull up resistor in the arduino to avoid short circuit
   _pullUp = pullUp;
   if(pullUp){
@@ -22,16 +22,16 @@ rotoPhone::rotoPhone(uint8_t  pin1, uint8_t  pin2, bool pullUp){
   _pin2 = pin2;
 }
 
-rotoPhone::number(){
+RotoPhone::number(){
   _state1  = digitalRead(_pin1);
   _state2 = digitalRead(_pin2);
   if(_pullUp){
-    if (isNum && num == HIGH && _lastState ==LOW) {
-      number ++ ;
+    if (_isNum && _state1 == HIGH && _lastState ==LOW) {
+      _number ++ ;
     }
   }else{
-    if (isNum && num == LOW && _lastState == HIGH) {
-      number ++ ;
+    if (_isNum && _state1 == LOW && _lastState == HIGH) {
+      _number ++ ;
     }
   }
   if (_state1 == _state2 ) {
@@ -43,11 +43,11 @@ rotoPhone::number(){
   _lastState =digitalRead(_pin2);
   delay(10);
 }
-rotoPhone::lastNumber(){
+RotoPhone::lastNumber(){
 
 
 }
-rotoPhone::debug(){
+RotoPhone::debug(){
   if(Serial.available){
     Serial.print("Pin state are : Pin1 : ");
     Serial.print(_state1);
