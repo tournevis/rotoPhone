@@ -30,17 +30,19 @@ int8_t RotoPhone::number(){
   if (_state1 == _state2 ) {
     _isNum = true;
   }else{
+    _finalNumber = _number;
     _isNum = false;
+
     //return _finalNumber =-1 ;
   //  if(_pullUp){ _finalNumber = _number -1 ; }else{ _finalNumber = _number ;}
     //return number;
 
 
-    _number = 0;
+    _number = -1;
   }
   _lastState =digitalRead(_pin2);
   delay(10);
-  return-1;
+  return _finalNumber;
 
 }
 void RotoPhone::debug(){
