@@ -4,6 +4,7 @@
 RotoPhone::RotoPhone(uint8_t pin1, uint8_t  pin2, bool pullUp){
   //Turn on pull up resistor in the arduino to avoid short circuit
   _pullUp = pullUp;
+  _startTime = 0;
   if(pullUp){
     pinMode(pin1, INPUT_PULLUP);
     pinMode(pin2,  INPUT_PULLUP);
@@ -29,21 +30,29 @@ int8_t RotoPhone::number(){
   }
   if (_state1 == _state2 ) {
     _isNum = true;
+    if(_startTime == 0 ){
+      _startTime = millis();
+    }
   }else{
-    _finalNumber = _number;
+    if(_finalNumber != _number ){
+      _finalTime = millis() - _startTime;
+    }
+    _finalNumber = _number ;
     _isNum = false;
-
+    _startTime = 0;
     //return _finalNumber =-1 ;
   //  if(_pullUp){ _finalNumber = _number -1 ; }else{ _finalNumber = _number ;}
     //return number;
-
-
     _number = -1;
   }
   _lastState =digitalRead(_pin2);
   delay(10);
   return _finalNumber;
 
+}
+
+unsigned long RotoPhone::numTime(){
+  return _finalTime;
 }
 void RotoPhone::debug(){
   //if(Serial.available() > 0){

@@ -3,9 +3,12 @@
 Simple lib to control rotary dial with Arduino
 ### Fonction
 
-**number()**
+  **number()**
 
 return -1 if nothing was type. If user input a number return it once at the end of the keyboard rotation.
+
+  **numTime()**
+return a unsigned long , it time of the numerotation 
 
   **debug()**
 
@@ -20,16 +23,19 @@ print value on each loop in serial. Don't forget to init your serial to use this
 #include <RotoPhone.h>
 
 //Declare Rotophone Object
-
+int number ;
 RotoPhone roto(4,5);
 
 void setup() {
   // if you use debug don't forget to init Serial
    Serial.begin(9600);
+   number = 0;
 }
 void loop() {
-  if(roto.number()>= 0){
-    Serial.println(roto.number());
+  number = roto.number();
+  if(number>= 0){
+    Serial.println(number);
+    Serial.println(roto.numTime());
   }
 
   // print value on each loop
