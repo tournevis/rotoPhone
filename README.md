@@ -15,7 +15,7 @@ print value on each loop in serial. Don't forget to init your serial to use this
 
 ### Usage
 
-Code:
+**Code:**
 ```
 #include <RotoPhone.h>
 
@@ -38,7 +38,7 @@ void loop() {
 }
 ```
 
-Prototype :
+**Prototype :**
 
 ![](http://i.imgur.com/mYJ91SB.png)
 ### WIP
