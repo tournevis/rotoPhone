@@ -50,7 +50,9 @@ int8_t RotoPhone::number(){
   return _finalNumber;
 
 }
-
+bool RotoPhone::isNum(){
+  return _isNum;  
+}
 unsigned long RotoPhone::numTime(){
   return _finalTime;
 }

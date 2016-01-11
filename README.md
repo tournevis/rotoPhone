@@ -1,7 +1,7 @@
 # RotoPhone
 
-Simple lib to control rotary dial with Arduino
-Written with love and Coffee. :full_moon_with_face: 
+Simple lib to control rotary dial with Arduino. \n
+Written with love and Coffee. :full_moon_with_face:
 ### Fonction
 
   **number()**
@@ -10,7 +10,11 @@ return -1 if nothing was type. If user input a number return it once at the end 
 
   **numTime()**
 
-return a unsigned long , it time of the numerotation
+return a unsigned long , it's time of the numerotation
+
+  **isNum()**
+
+return a bool, true is the user is currently composing a number
 
   **debug()**
 
@@ -41,7 +45,8 @@ void loop() {
   }
 
   // print value on each loop
-  roto.debug();
+  //roto.debug();
+  //Serial.println(roto.isNum());
   delay(20);
 }
 ```
