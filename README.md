@@ -1,6 +1,7 @@
 # RotoPhone
 
 Simple lib to control rotary dial with Arduino
+Written with love and Coffee. :full_moon_with_face: 
 ### Fonction
 
   **number()**
@@ -8,7 +9,7 @@ Simple lib to control rotary dial with Arduino
 return -1 if nothing was type. If user input a number return it once at the end of the keyboard rotation.
 
   **numTime()**
-  
+
 return a unsigned long , it time of the numerotation
 
   **debug()**
