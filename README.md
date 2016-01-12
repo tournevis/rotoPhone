@@ -16,6 +16,10 @@ return a unsigned long , it's time of the numerotation
 
 return a bool, true is the user is currently composing a number
 
+  **isPick()**
+
+`return a bool, `true` when the headphone is pickup and `false when he is hangup.
+
   **debug()**
 
 print value on each loop in serial. Don't forget to init your serial to use this function
@@ -28,20 +32,38 @@ print value on each loop in serial. Don't forget to init your serial to use this
 ```
 #include <RotoPhone.h>
 
-//Declare Rotophone Object
-int number ;
-RotoPhone roto(4,5);
+int notaryNumber;
+boolean isPick;
+
+RotoPhone roto(4,5,3, false);
 
 void setup() {
-  // if you use debug don't forget to init Serial
+   // if you use debug don't forget to init Serial
    Serial.begin(9600);
-   number = 0;
+   Serial.println("Void setup");
 }
+
 void loop() {
-  number = roto.number();
-  if(number>= 0){
-    Serial.println(number);
-    Serial.println(roto.numTime());
+
+  // Capture the rotary number
+  notaryNumber = roto.number();
+  if(notaryNumber >= 0){
+    Serial.println(notaryNumber);
+  }
+
+  if(roto.isNum()){
+    Serial.print(".");  
+  }
+
+  // Capture the phone state
+  boolean pickUp = roto.isPick();
+  if(pickUp != isPick){
+    if(pickUp){
+      Serial.println("raccrocher");
+    } else {
+      Serial.println("deccrocher");
+    }
+    isPick = pickUp;
   }
 
   // print value on each loop
