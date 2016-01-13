@@ -5,14 +5,14 @@
 #include "Arduino.h"
 class RotoPhone{
   public :
-    RotoPhone(uint8_t pin1, uint8_t pin2, int8_t pin3 = 0, bool pullUp = false);
+    RotoPhone(uint8_t pin1, uint8_t pin2, int8_t pin3 = -1, bool pullUp = false);
     int8_t number();
     unsigned long numTime();
     bool isNum();
     bool isPick();
     void debug();
   private :
-    uint8_t _number;
+    int8_t _number;
     int8_t _finalNumber;
     uint8_t _pin1;
     uint8_t _pin2;

@@ -32,7 +32,7 @@ print value on each loop in serial. Don't forget to init your serial to use this
 ```
 #include <RotoPhone.h>
 
-int notaryNumber;
+int rotaryNumber;
 boolean isPick;
 
 RotoPhone roto(4,5,3, false);
@@ -46,9 +46,9 @@ void setup() {
 void loop() {
 
   // Capture the rotary number
-  notaryNumber = roto.number();
-  if(notaryNumber >= 0){
-    Serial.println(notaryNumber);
+  rotaryNumber = roto.number();
+  if(rotaryNumber >= 0){
+    Serial.println(rotaryNumber);
   }
 
   if(roto.isNum()){
@@ -59,9 +59,9 @@ void loop() {
   boolean pickUp = roto.isPick();
   if(pickUp != isPick){
     if(pickUp){
-      Serial.println("raccrocher");
+      Serial.println("hangUp");
     } else {
-      Serial.println("deccrocher");
+      Serial.println("pickUp");
     }
     isPick = pickUp;
   }
